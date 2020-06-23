@@ -10,7 +10,10 @@ namespace HyperFabric.Integration.Tests.Builders
 
         private TestManifestBuilder(string connection)
         {
-            _manifest = new Manifest {ClusterDetails = new Cluster {Connection = connection}};
+            _manifest = new Manifest
+            {
+                ClusterDetails = new Cluster {Connection = connection}, Options = {CheckClusterHealthWaitTime = 10}
+            };
         }
         
         public static TestManifestBuilder From(string connection)
