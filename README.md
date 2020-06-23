@@ -260,7 +260,7 @@ dotnet pack --no-build --configuration Release
 To publish the package to the nuget feed on nuget.org:
 
 ```bash
-dotnet nuget push ./HyperFabric.Client/bin/Release/HyperFabric.Client.1.0.0.nupkg -k [THE API KEY] -s "https://api.nuget.org/v3/packages" 
+dotnet nuget push ./bin/Release/HyperFabric.Client.1.0.0.nupkg -k [THE API KEY] -s https://api.nuget.org/v3/index.json 
 ```
 
 #### Installing the Tool
