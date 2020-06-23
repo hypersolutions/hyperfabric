@@ -305,3 +305,7 @@ cd "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup"
 ```
 
 **Note** the service fabric explorer will not work. Not sure how to get this working!
+
+### Links
+
+* **GitFlow** https://datasift.github.io/gitflow/IntroducingGitFlow.html

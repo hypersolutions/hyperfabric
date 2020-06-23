@@ -26,7 +26,7 @@ namespace HyperFabric.Commands
         {
             try
             {
-                var canContinue = false;
+                var canContinue = !_context.Manifest.Options.CheckClusterHealthWaitTime.HasValue;
                 
                 if (_context.Manifest.Options.CheckClusterHealthWaitTime.HasValue)
                 {

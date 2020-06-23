@@ -14,17 +14,18 @@ namespace HyperFabric.Tests.Commands
     public class CheckClusterHealthCommandTests : CommandTestBase
     {
         private readonly CheckClusterHealthCommand _command;
+        private CommandContext _context;
 
         public CheckClusterHealthCommandTests()
         {
-            var context = new CommandContext
+            _context = new CommandContext
             {
                 FabricClient = FabricClient.Object, 
                 Logger = Logger.Object, 
                 Manifest = new Manifest()
             };
-            context.Manifest.Options.CheckClusterHealthWaitTime = 1;
-            _command = new CheckClusterHealthCommand(context, InnerCommand.Object, StageTypes.Preparation);
+            _context.Manifest.Options.CheckClusterHealthWaitTime = 1;
+            _command = new CheckClusterHealthCommand(_context, InnerCommand.Object, StageTypes.Preparation);
             _command.HealthCheckDelay = 200;
         }
         
@@ -118,7 +119,7 @@ namespace HyperFabric.Tests.Commands
         [Fact]
         public async Task NoHealthCheckRequired_RunAsync_CallsInnerCommandRunAsync()
         {
-            //_context.Manifest.Options.CheckClusterHealth = false;
+            _context.Manifest.Options.CheckClusterHealthWaitTime = null;
             var cluster = new Mock<IClusterClient>();
             var healthChunkResult = Task.FromResult(new ClusterHealthChunk(HealthState.Ok));
             cluster.Setup(c => c.GetClusterHealthChunkAsync(60, CancellationToken.None)).Returns(healthChunkResult);
@@ -127,6 +128,18 @@ namespace HyperFabric.Tests.Commands
             await _command.RunAsync();
 
             InnerCommand.Verify(c => c.RunAsync(), Times.Once);
+        }
+        
+        [Fact]
+        public async Task NoHealthCheckRequired_RunAsync_NeverCallsGetClusterHealthChunkAsync()
+        {
+            _context.Manifest.Options.CheckClusterHealthWaitTime = null;
+            var cluster = new Mock<IClusterClient>();
+            FabricClient.Setup(c => c.Cluster).Returns(cluster.Object);
+
+            await _command.RunAsync();
+
+            cluster.Verify(c => c.GetClusterHealthChunkAsync(60, CancellationToken.None), Times.Never);
         }
     }
 }

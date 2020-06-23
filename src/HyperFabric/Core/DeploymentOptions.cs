@@ -20,7 +20,7 @@ namespace HyperFabric.Core
             set => _numberOfParallelDeployments.Value = value;
         }
         
-        public int? CheckClusterHealthWaitTime { get; set; } = 30;
+        public int? CheckClusterHealthWaitTime { get; set; }
         
         public string WorkingDirectory { get; set; } = Environment.CurrentDirectory;
         
