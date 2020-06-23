@@ -80,5 +80,36 @@ namespace HyperFabric.Tests.Validation
             
             result.Success.ShouldBeTrue();
         }
+        
+        [Theory]
+        [InlineData(9)]
+        [InlineData(301)]
+        public void InvalidClusterHealthWaitTime_Validate_ReturnsError(int waitTime)
+        {
+            var manifest = TestManifestBuilder
+                .From("http://localhost:19080")
+                .WithClusterHealthWaitTime(waitTime)
+                .Build();
+
+            var result = _validator.Validate(manifest);
+            
+            var error = result.Errors.FirstOrDefault(
+                e => e.Property == "CheckClusterHealthWaitTime" && 
+                     e.Error == "The cluster health wait time is out of range: 10 to 300 seconds.");
+            error.ShouldNotBeNull();
+        }
+        
+        [Fact]
+        public void InvalidClusterHealthWaitTime_Validate_ReturnsSuccessAsFalse()
+        {
+            var manifest = TestManifestBuilder
+                .From("http://localhost:19080")
+                .WithClusterHealthWaitTime(0)
+                .Build();
+
+            var result = _validator.Validate(manifest);
+            
+            result.Success.ShouldBeFalse();
+        }
     }
 }

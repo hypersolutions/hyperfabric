@@ -75,7 +75,7 @@ They are also common deployment _options_ such as _NumberOfParallelDeployments_ 
 
 * **NumberOfParallelDeployments** determines how many actual parallel deployments can take place at any one time. If a group contains more packages than this value then the tool 
 will start new deployments as threads become available. This is optional and has a default of 5 but is bounded with a range of 1 to 10.
-* **CheckClusterHealthWaitTime** determines the amount of time in seconds to wait for the cluster to become healthy during health checks. Optional with a default of 30 seconds.
+* **CheckClusterHealthWaitTime** determines the amount of time in seconds to wait for the cluster to become healthy during health checks. Optional with a range of 10 to 300 seconds.
 * **WorkingDirectory** is the local directory where packages are copied to before being uploaded. Optional with a default of the current working directory where the tool runs.
 
 ##### ClusterDetails
@@ -128,6 +128,33 @@ the UnmonitoredAuto, UnmonitoredManual and Monitored values.
 
 The above example will deploy a single package to an unsecured cluster. If the application type exists then it will be removed first - along with its applications.
 
+#### Single Package with Cluster Health Check
+
+```json
+{
+  "options": {
+    "numberOfParallelDeployments": 2,
+    "checkClusterHealthWaitTime": 30
+  },
+  "clusterDetails": {
+    "connection": "http://localhost:19080"
+  },
+  "groups": [
+    {
+      "items": [
+        {
+          "packagePath": "c:\\temp\\app1",
+          "parameterFile": "C:\\temp\\app1\\cloud.xml",
+          "removeApplicationFirst": true
+        }
+      ]
+    }
+  ]
+}
+```
+
+The above shows an example of using the _CheckClusterHealthWaitTime_ to check that the cluster is healthy before beginning a deployment.
+ 
 #### Parallel Package Deployment
 
 ```json

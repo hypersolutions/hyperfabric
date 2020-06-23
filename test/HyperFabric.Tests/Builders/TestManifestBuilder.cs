@@ -32,6 +32,12 @@ namespace HyperFabric.Tests.Builders
             return this;
         }
         
+        public TestManifestBuilder WithClusterHealthWaitTime(int waitTime)
+        {
+            _manifest.Options.CheckClusterHealthWaitTime = waitTime;
+            return this;
+        }
+        
         public TestManifestBuilder WithGroup(params DeploymentItem[] items)
         {
             var group = new DeploymentGroup {Items = items};
