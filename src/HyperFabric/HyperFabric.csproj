@@ -10,7 +10,7 @@
     
     <PropertyGroup>
         <PackageId>HyperFabric</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <Authors>Hyperbolic Solutions</Authors>
         <Company>Hyperbolic Solutions</Company>
         <Title>Hyperbolic Service Fabric Deployment API</Title>
