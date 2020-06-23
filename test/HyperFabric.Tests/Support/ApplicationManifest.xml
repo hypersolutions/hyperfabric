@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    ApplicationTypeName="App1" 
+    ApplicationTypeVersion="1.0.0" 
+    xmlns="http://schemas.microsoft.com/2011/01/fabric">
+    <Parameters>
+        <Parameter Name="ConnectionString" DefaultValue="" />
+    </Parameters>
+    <ServiceManifestImport>
+        <ServiceManifestRef ServiceManifestName="App1ServicePkg" ServiceManifestVersion="1.0.0" />
+        <ConfigOverrides>
+            <ConfigOverride Name="Config">
+                <Settings>
+                    <Section Name="Connections">
+                        <Parameter Name="ConnectionString" Value="[ConnectionString]" />
+                    </Section>
+                </Settings>
+            </ConfigOverride>
+        </ConfigOverrides>
+    </ServiceManifestImport>
+</ApplicationManifest>

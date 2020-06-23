@@ -1,0 +1,52 @@
+﻿{
+  "ClusterDetails": {
+    "Connection": "http://localhost:19080",
+    "FindByValue": "EC0C11751FBE401BAE21685EF4A8C46B"
+  },
+  "Groups": [
+    {
+      "Items": [
+        {
+          "PackagePath": "C:\\Temp\\App1Pkg",
+          "ParameterFile": "Local.1Node.xml",
+          "RemoveApplicationFirst": true,
+          "MaxApplicationReadyWaitTime": 50
+        },
+        {
+          "PackagePath": "C:\\Temp\\App2Pkg",
+          "ParameterFile": "Local.5Node.xml",
+          "RemoveApplicationFirst": false,
+          "MaxApplicationReadyWaitTime": 100
+        },
+        {
+          "PackagePath": "C:\\Temp\\App3Pkg",
+          "ParameterFile": "Local.1Node.xml",
+          "RemoveApplicationFirst": false,
+          "MaxApplicationReadyWaitTime": 100
+        }
+      ]
+    },
+    {
+      "Items": [
+        {
+          "PackagePath": "C:\\Temp\\App4Pkg",
+          "ParameterFile": "Local.1Node.xml",
+          "RemoveApplicationFirst": true,
+          "MaxApplicationReadyWaitTime": 50
+        },
+        {
+          "PackagePath": "C:\\Temp\\App5Pkg",
+          "ParameterFile": "Local.5Node.xml",
+          "RemoveApplicationFirst": false,
+          "MaxApplicationReadyWaitTime": 100
+        },
+        {
+          "PackagePath": "C:\\Temp\\App6Pkg",
+          "ParameterFile": "Local.1Node.xml",
+          "RemoveApplicationFirst": false,
+          "MaxApplicationReadyWaitTime": 100
+        }
+      ]
+    }
+  ]
+}

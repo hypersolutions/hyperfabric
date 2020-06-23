@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <PackageId>HyperFabric</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Hyperbolic Solutions</Authors>
+        <Company>Hyperbolic Solutions</Company>
+        <Title>Hyperbolic Service Fabric Deployment API</Title>
+        <PackageProjectUrl>https://github.com/hypersolutions/hyperfabric</PackageProjectUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>Commandline parallel deployment api for service fabric.</Description>
+        <Copyright>Hyperbolic Solutions 2020</Copyright>
+        <PackageTags>Service Fabric Deployment</PackageTags>
+        <RepositoryUrl>https://github.com/hypersolutions/hyperfabric</RepositoryUrl>
+        <RepositoryType>github</RepositoryType>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.ServiceFabric.Client.Http" Version="4.0.0" />
+      <PackageReference Include="System.Text.Json" Version="4.7.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>HyperFabric.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+    </ItemGroup>
+    
+</Project>

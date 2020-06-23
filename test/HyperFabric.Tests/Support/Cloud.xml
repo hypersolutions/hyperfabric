@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://schemas.microsoft.com/2011/01/fabric"
+    Name="fabric:/app1service">
+    <Parameters>
+        <Parameter Name="ConnectionString" Value="Server=(localdb)\sqlserver;Database=Test;User=homers;Password=s1mps0ns;" />
+    </Parameters>
+</Application>
