@@ -44,6 +44,20 @@ dotnet tool uninstall HyperFabric.Client --global
 
 ### Overview
 
+This tool allows you to deploy multiple packages into a cluster via a single deployment manifest _json_ description. It will deploy packages in parallel and also allows 
+you to deploy dependencies in groups. It provides the option for pre and post cluster health checks so that you can check that your cluster is healthy _before_ deployment 
+as well as afterwards.
+
+It also gives you the option to remove existing applications and types _before_ deployment - which might be useful in certain development scenarios. Packages take up space plus 
+upgrades are slower than clean deployments with the upgrade domain health checks that take place - which are omiited for clean installs.
+
+The kind of _usecases_ for this tool could be automated deployments via pipelines, testers setting up local manifests to build their cluster for service fabric testing or live 
+deployments into production clusters.
+
+It provides a _json_ output to the console and/or file, which can be queried to check for errors.
+
+There is a pre-deployment manifest validation to try and pick up basic errors before deployment to a cluster along with a cluster connection check.
+  
 ### Deployment Manifest
 
 The deployment of applications into service fabric is achieved via a _Deployment Manifest_. This is a _json_ structure that contains a list of packages to be deployed, and in what order.
