@@ -429,6 +429,7 @@ $RECYCLE.BIN/
 
 coverage.opencover.xml
 
-# Logging
+# Other
 
 **/logs/*.txt
+test-packages/
