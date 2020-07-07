@@ -41,5 +41,9 @@
     <ItemGroup>
         <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
     </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="HyperOptions" Version="1.0.0" />
+    </ItemGroup>
     
 </Project>
