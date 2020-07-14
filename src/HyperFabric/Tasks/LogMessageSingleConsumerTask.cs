@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using System.Threading.Tasks;
 using HyperFabric.Logging;
+using HyperTask;
 
 namespace HyperFabric.Tasks
 {
@@ -13,7 +15,7 @@ namespace HyperFabric.Tasks
             _providers = providers;
         }
 
-        protected override void HandleItem(LogMessage item)
+        protected override Task HandleItemAsync(LogMessage item)
         {
             var value = JsonSerializer.Serialize(item);
 
@@ -21,6 +23,8 @@ namespace HyperFabric.Tasks
             {
                 provider.Log(value);
             }
+            
+            return Task.CompletedTask;
         }
     }
 }

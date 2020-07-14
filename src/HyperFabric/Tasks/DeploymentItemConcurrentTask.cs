@@ -4,10 +4,11 @@ using System.Threading.Tasks;
 using HyperFabric.Commands;
 using HyperFabric.Core;
 using HyperFabric.Logging;
+using HyperTask;
 
 namespace HyperFabric.Tasks
 {
-    public class DeploymentItemConcurrentTask : ConcurrentTasks<DeploymentItem>
+    public class DeploymentItemConcurrentTask : ConcurrentTask<DeploymentItem>
     {
         private readonly CommandContext _context;
 

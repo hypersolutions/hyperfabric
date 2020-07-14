@@ -26,6 +26,7 @@
     </PropertyGroup>
     
     <ItemGroup>
+        <PackageReference Include="HyperTask" Version="1.0.1" />
         <PackageReference Include="Microsoft.ServiceFabric.Client.Http" Version="4.0.0" />
       <PackageReference Include="System.Text.Json" Version="4.7.1" />
     </ItemGroup>

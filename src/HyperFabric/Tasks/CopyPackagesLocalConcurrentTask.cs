@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using HyperFabric.Core;
 using HyperFabric.Extensions;
 using HyperFabric.Logging;
+using HyperTask;
 
 namespace HyperFabric.Tasks
 {
-    public class CopyPackagesLocalConcurrentTask : ConcurrentTasks<DeploymentItem>
+    public class CopyPackagesLocalConcurrentTask : ConcurrentTask<DeploymentItem>
     {
         private readonly string _tempDir;
         private readonly ILogger _logger;
@@ -29,17 +31,17 @@ namespace HyperFabric.Tasks
         }
 
         public bool HasErrors => _hasErrors;
-        
-        protected override Task BeforeTaskRunAsync()
+
+        public override Task StartAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             if (!Directory.Exists(_tempDir))
             {
                 Directory.CreateDirectory(_tempDir);
             }
             
-            return Task.CompletedTask;
+            return base.StartAsync(cancellationToken);
         }
-        
+
         protected override Task HandleItemAsync(DeploymentItem item, int taskId)
         {
             var sourceDirInfo = new DirectoryInfo(item.PackagePath);
